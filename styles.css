@@ -1,0 +1,28 @@
+.flex 
+{
+    display: flex;
+    flex-direction: row;
+}
+
+.gutter.gutter-horizontal
+{
+    cursor: ew-resize;
+    background-color: #90CE9C;
+}
+
+.sceneGraphNode
+{
+    position: absolute;
+    border: 1px solid #d3d3d3;
+}
+
+.sceneGraphNodeHeader
+{
+    border: 1px solid #000000;
+    padding: 1px 5px;
+}
+
+.sceneGraphNodeContent
+{
+    padding: 1px 5px;
+}

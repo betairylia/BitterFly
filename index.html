@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>BitterFly dev</title>
+        <link rel="stylesheet" href="styles.css"/>
+        <script src="https://unpkg.com/split.js/dist/split.min.js"></script>
+        <script src="jsplumb/jsplumb.min.js"></script>
+    </head>
+    <body>
+        <div class="flex">
+            
+            <div class="split" id="renderer">
+                <p>Renderer</p>
+                <canvas></canvas>
+            </div>
+            
+            <div class="split" id="node-graph">
+            <!-- <div class="split" id="node-graph" style="clip-path: circle(300px at center);"> -->
+                <div style="transform: scale(1.0, 1.0);">
+                    <p>Node graph</p>
+
+                    <div class="sceneGraphNode" id="node1">
+                        <div class="sceneGraphNodeHeader" id="node1header">Node 1</div>
+                        <div class="sceneGraphNodeContent">
+                            <p>Scene Node</p>
+                        </div>
+                    </div>
+                    <div class="sceneGraphNode" id="node2">
+                        <div class="sceneGraphNodeHeader" id="node2header">Node 2</div>
+                        <div class="sceneGraphNodeContent">
+                            <p>Scene Node</p>
+                        </div>
+                    </div>
+                    <div class="sceneGraphNode" id="node3">
+                        <div class="sceneGraphNodeHeader" id="node1header">Node 3</div>
+                        <div class="sceneGraphNodeContent">
+                            <p>Scene Node</p>
+                        </div>
+                    </div>
+                    <div class="sceneGraphNode" id="node4">
+                        <div class="sceneGraphNodeHeader" id="node2header">Node 4</div>
+                        <div class="sceneGraphNodeContent">
+                            <p>Scene Node</p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        
+        </div>
+
+        <script>
+            Split(['#renderer', '#node-graph'], {
+                elementStyle: (dimension, size, gutterSize) => ({
+                    'flex-basis': `calc(${size}% - ${gutterSize}px)`,
+                }),
+                gutterStyle: (dimension, gutterSize) => ({
+                    'flex-basis':  `${gutterSize}px`,
+                }),
+                gutterSize: 8,
+            })
+        </script>
+        <script src="js/sceneGraph/graphMain.js"></script>
+    </body>
+</html>
