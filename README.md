@@ -1,2 +1,2 @@
 # BitterFly
-A WebGL based (analytical) SDF (Signed Distance Field) editor.
+A WebGL based (analytical) SDF (Signed Distance Field) toy.
