@@ -1,12 +1,46 @@
+html
+{
+    width: 100%;
+    height: 100%;
+}
+
+body
+{
+    padding: 0;
+    margin: 0;
+
+    width: 100%;
+    height: 100%;
+}
+
 .flex 
 {
     display: flex;
     flex-direction: row;
 }
 
+.flex_vert
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.split
+{
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+}
+
 .gutter.gutter-horizontal
 {
-    cursor: ew-resize;
+    cursor: col-resize;
+    background-color: #90CE9C;
+}
+
+.gutter.gutter-vertical
+{
+    cursor: row-resize;
     background-color: #90CE9C;
 }
 
@@ -16,13 +50,40 @@
     border: 1px solid #d3d3d3;
 }
 
-.sceneGraphNodeHeader
+.sceneGraphNode .header
 {
     border: 1px solid #000000;
-    padding: 1px 5px;
+    padding: 5px;
+    text-align: center;
+    font-size: 10px;
 }
 
-.sceneGraphNodeContent
+.sceneGraphNode .row
 {
-    padding: 1px 5px;
+    padding: 5px;
+    border: 1px solid #90CE9C;
+    margin: auto;
+    text-align: center;
+}
+
+.sceneGraphNode .row p
+{
+    margin: 0;
+    text-align: center;
+    font-size: 10px;
+}
+
+.sceneGraphNode canvas
+{
+    width: 100px;
+    height: 100px;
+    display: block;
+}
+
+#windowContainer
+{
+    padding: 0;
+
+    width: 100%;
+    height: 100%;
 }

@@ -6,46 +6,45 @@
         <link rel="stylesheet" href="styles.css"/>
         <script src="https://unpkg.com/split.js/dist/split.min.js"></script>
         <script src="jsplumb/jsplumb.min.js"></script>
+        <script src="/ace-builds/src-noconflict/ace.js"></script>
+        <!-- <script src="/ace-builds/src-min-noconflict/ace.js"></script> -->
     </head>
     <body>
-        <div class="flex">
+        <div id="windowContainer" class="flex">
             
             <div class="split" id="renderer">
                 <p>Renderer</p>
                 <canvas></canvas>
             </div>
             
-            <div class="split" id="node-graph">
+            <div class="split flex_vert" id="node-graph">
             <!-- <div class="split" id="node-graph" style="clip-path: circle(300px at center);"> -->
-                <div style="transform: scale(1.0, 1.0);">
-                    <p>Node graph</p>
+                <div class="split" id="graphPanel" style="transform: scale(1.0);">
+                    <p>Node graph 
+                        <button onclick="newNode('shape')">+ Shape</button>
+                        <button onclick="newNode('domain')">+ Domain</button>
+                        <button onclick="sceneGraph.autoSave()">AutoSave</button>
+                        <button onclick="localStorage['bitterFly_autoSaveJSON'] = '[]'">Clear AutoSave</button>
+                    </p>
 
-                    <div class="sceneGraphNode" id="node1">
-                        <div class="sceneGraphNodeHeader" id="node1header">Node 1</div>
-                        <div class="sceneGraphNodeContent">
-                            <p>Scene Node</p>
+                    <template id="graphNodeTemplate">
+                        <div class="sceneGraphNode" id="node">
+                            <div class="header">SDF Shape 1</div>
+                            <div class="row" id="thumbnail"><canvas></canvas></div>
+                            <!-- <div class="row" id="space"><p>View code</p></div> -->
+                            <div class="row" id="nodeInput"><p>Input</p></div>
+                            <div class="row" id="nodeOutput"><p>Output</p></div>
                         </div>
-                    </div>
-                    <div class="sceneGraphNode" id="node2">
-                        <div class="sceneGraphNodeHeader" id="node2header">Node 2</div>
-                        <div class="sceneGraphNodeContent">
-                            <p>Scene Node</p>
-                        </div>
-                    </div>
-                    <div class="sceneGraphNode" id="node3">
-                        <div class="sceneGraphNodeHeader" id="node1header">Node 3</div>
-                        <div class="sceneGraphNodeContent">
-                            <p>Scene Node</p>
-                        </div>
-                    </div>
-                    <div class="sceneGraphNode" id="node4">
-                        <div class="sceneGraphNodeHeader" id="node2header">Node 4</div>
-                        <div class="sceneGraphNodeContent">
-                            <p>Scene Node</p>
-                        </div>
-                    </div>
-                    
+                    </template>
                 </div>
+                <div class="split" id="code-editor">//Code for ?
+
+void main()
+{
+    glPosition = vec4(1.0f, 1.0f, 0.2f, 1.0f);
+    out.color = step(dot(a, l) + 0.2f, 1.0);
+}
+</div>
             </div>
         
         </div>
@@ -60,7 +59,22 @@
                 }),
                 gutterSize: 8,
             })
+
+            Split(['#graphPanel', '#code-editor'], {
+                direction: 'vertical',
+                elementStyle: (dimension, size, gutterSize) => ({
+                    'flex-basis': `calc(${size}% - ${gutterSize}px)`,
+                }),
+                gutterStyle: (dimension, gutterSize) => ({
+                    'flex-basis':  `${gutterSize}px`,
+                }),
+                gutterSize: 8,
+                snapOffset: 0,
+                sizes: [70, 30]
+            })
         </script>
+        <script src="js/sceneGraph/codeTemplates.js"></script>
         <script src="js/sceneGraph/graphMain.js"></script>
+        <script src="js/sceneGraph/graphRenderer.js"></script>
     </body>
 </html>
