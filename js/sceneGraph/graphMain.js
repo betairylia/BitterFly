@@ -339,4 +339,9 @@ class SceneGraph
             alert('Current status unsaved!');
         }
     }
+
+    generateCode()
+    {
+        
+    }
 }
